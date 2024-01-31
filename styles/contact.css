@@ -1,0 +1,10 @@
+#contact {
+    min-height: 100vh;
+}
+
+#contact h1{
+    padding: 1rem;
+    text-align: center;
+    font-family:  cursive, serif;
+    font-weight: 400;
+}

@@ -1,0 +1,99 @@
+
+
+#toolsAndTech .toolsParent{
+
+    min-height: 60vh;
+    padding: 4rem 0;
+    position: relative;
+    margin: 2rem 0;
+    
+}
+
+.toolsParent p{
+
+        font-family: "Sarpanch", serif;
+        font-size: 1.2vw;
+        
+
+}
+.toolsParent h1{
+    font-family: "Signika", serif;
+    font-size: 3.5vw;
+    /* font-size: 4rem; */
+    font-weight: 700;
+    margin: .9rem 0;
+}
+
+.toolsParent h1 span{
+    font-weight: 400;
+}
+
+.toolsParent div img{
+    height: 3rem;
+    width: 3rem;
+    margin: .8rem;
+    
+    padding: .6rem ;
+    border-radius: .6rem;
+    
+}
+
+.toolsParent .toolsAllKnown p{
+    font-family: "Signika", serif;
+    text-align: justify;
+
+}
+
+.toolsAllKnown {
+    width: 100%;
+    height: auto;
+    /* display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+.toolsAllKnown div{
+    /* width: 25%; */
+    padding: 1rem;
+    font-size: 1rem;
+    background:  #f7f4f4c2;
+
+}
+.toolsAllKnown div p{
+    font-size: .8rem;
+}
+
+.toolsAllKnown div h4{
+    margin-bottom: .8rem;
+}
+
+/* For small screens (default grid with 2 columns) */
+
+@media (max-width:768px) {
+    .toolsAllKnown {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+    .toolsParent div p{
+        font-size: .8rem;
+    }    
+    .toolsParent div h1{
+        font-size: 2rem;
+    }
+}
+@media (max-width:640px) {
+    #toolsAndTech{
+        margin: 0;
+        padding-left: 2rem;
+    }
+}
+@media (max-width:425px) {
+    
+    #toolsAndTech{
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,195 @@
+/* ALL SECTION STYLED IN HOME 
+.mainContainer section{
+
+    min-height:90vh;
+    margin: 0 5rem;
+    padding: 0 3rem;
+    border: 1px solid grey;
+}
+} */
+#about {
+    background: #f7f4f4c2;
+}
+
+#about .parentAbout{
+    display: flex;
+    min-height: 60vh;
+    padding: 2rem 0;
+    position: relative;
+    
+    
+}
+
+#about .aboutImg{
+    min-width: 30vw;
+}
+#about .aboutImg img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30vw;
+    height: 80%;
+    object-fit: cover;
+    overflow: visible;
+
+
+
+}
+.aboutInfo .para1{
+    font-family: "Sarpanch", serif;
+    letter-spacing: 4px;
+    font-size: .8rem;
+    
+}
+
+.aboutInfo h3{
+    font-family: "Signika", serif;
+    font-size: 3.5vw;
+    /* font-size: 4rem; */
+    font-weight: 700;
+    margin: .9rem 0;
+}
+.aboutInfo h3 span{
+    font-weight: 400;
+}
+
+.aboutInfo .para2{
+    font-family: Oxygen;
+    max-width: 36rem;
+    font-size: 1.4vw;
+    margin-bottom: 2.6rem;
+    text-align: justify;
+}
+
+#about .aboutInfo{
+    min-width: auto;
+
+    padding: 4rem 0;
+    
+}
+
+.whatilike{
+    display: flex;
+    gap: 1rem;
+}
+.whatilike div{
+
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: flex-start;
+    background: white;
+    border-radius: .6rem;
+   
+    
+
+    
+}
+
+.whatilike div img{
+    height: 3rem;
+    width: 3rem;
+    margin: .8rem;
+    margin-left: 0;
+    
+    padding: .6rem ;
+    background: #ddd8d8;
+    border-radius: .6rem;
+    
+}
+.whatilike div p{
+    font-size: 90%;
+
+    margin-top: .8rem;
+}
+
+
+
+@media (max-width:1024px) {
+    
+    .aboutImg{
+        display: none;
+    }
+    .aboutInfo h3{
+        font-size: 5vw;
+    }
+
+    .aboutInfo .para2 {
+        max-width: 45rem;
+        font-size: 1.9vw;
+
+    }
+
+    
+    .whatilike div h4{
+        font-size: 1rem;
+    }
+    .whatilike div p{
+        font-size: 1.8vw;
+        
+    }
+
+
+
+
+}
+@media (max-width:640px){
+
+    #about{
+        margin: 0;
+        padding-left:2rem ;
+    }
+    .whatilike {
+        flex-wrap: wrap;
+        
+    }   
+     .whatilike h4{
+        font-size: .5rem;
+
+        
+    }
+    .whatilike div{
+        max-width: 180px;
+
+    }
+
+    .aboutInfo .para1{
+        font-size: 2vw;
+    }
+    .aboutInfo h3{
+        font-size: 8vw;
+    }
+    .aboutInfo .para2{
+
+        max-width: 35rem;
+        font-size: .8rem;
+    }
+    .whatilike div p{
+        font-size: .7rem;
+
+    }
+
+
+}
+@media (max-width:425px) {
+    .whatilike div{
+        max-width: 148px;
+
+    }
+    .aboutInfo .para2{
+
+        max-width: 20rem;
+        font-size: .8rem;
+
+    }
+    #about{
+        margin: 0;
+        padding-left:1rem ;
+    }
+    .aboutInfo h4{
+        margin-bottom: .8rem;
+    }
+    .aboutInfo .para1{
+        font-size: .8rem;
+    }
+}

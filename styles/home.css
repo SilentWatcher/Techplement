@@ -1,0 +1,162 @@
+/* SECTION HOME STYLING START */
+
+
+/* :root {
+    --blue: red;
+    --white: #ffffff;
+    --background:black;
+  } */
+  
+.mainContainer section{
+    margin: 0 2.5rem;
+    padding: 0 1rem;
+    /* border: 1px solid grey; */
+    /* background: #000;
+    color: var(--white); */
+
+
+}
+#home{
+    min-height:90vh;
+    margin: 0 5rem;
+    /* padding: 0 3rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+#home .homecontainer{
+    margin-top: 2rem;
+
+}
+#home .small_para{
+    font-family: "Sarpanch", serif;
+    letter-spacing: 4px;
+    font-size: .9rem;
+    
+}
+#home h1{
+    font-family: "Signika", serif;
+    font-size: 5vw;
+    font-weight: 700;
+    margin: .9rem 0;
+    
+}
+#home h1 span{
+    font-weight: 400;
+}
+
+#home .second_para{
+    font-family: "Oxygen", serif;
+    max-width: 36rem;
+    /* font-size: 1.2rem; */
+    font-size: 90%;
+    margin-bottom: 2.6rem;
+
+
+}
+
+#home div button{
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: .4rem;
+    font-family: "Signika", serif;
+    /* font-size: 1rem; */
+    font-size: 80%;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: .6rem;
+}
+#home div button:nth-child(1){
+    background: #181717;
+    color: white;
+}
+
+#home div button:nth-child(1):hover{
+    background: #000000;
+}
+#home div button:nth-child(2){
+    background: #dcdfe6;
+    color: black;
+    
+}
+#home div button:nth-child(2):hover{
+    background: #cec7c7;
+}
+ 
+/* keep scrol and social icons */
+
+.keep_scroll_icons{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin-bottom: -2rem;
+}
+
+.keep_scroll_icons .scroll{
+    display: flex;
+    align-items: center;
+    
+}
+
+.social_media{
+    display: flex;
+    gap: 1rem;
+    line-height: 2rem;
+    font-weight: 700;
+    
+}
+.social_media .social_icons img{
+    height: 1.4rem;
+    margin-inline: .4rem;
+    cursor: pointer;
+
+}
+
+.scroll img{
+    height:1rem;
+    margin-right: .4rem;
+
+}
+
+@media (max-width:768px) {
+    #home  .social_media{
+        display: none;
+        background: #000;
+    }
+    #home .homecontainer h1{
+        font-size: 6vw;
+    }
+    /* #home .homecontainer .second_para{
+        
+    } */
+    #home{
+        margin: 1.5rem;
+        padding: 0;
+    }
+    .homecontainer .small_para{
+        font-size: .4rem;
+    }
+
+    #home .homecontainer{
+        margin-top: 0rem;
+    
+    }
+
+    
+}
+
+
+@media (max-width:425px) {
+    #home .homecontainer h1{
+        font-size: 7.5vw;
+    }
+    #home .homecontainer{
+        padding-top: 1rem;
+    }
+    #home .homecontainer .second_para{
+        font-size: .9rem;
+    }
+}
+
+

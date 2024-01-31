@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikas Sr Vitekari</title>
+
+    <!-- oxygen font import start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- oxygen font import end-->
+    <!-- signika font import start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
+    <!-- signika font import end -->
+    <!-- sarpanch font import start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- sarpanch font import end -->
+    <!-- pinyon script font import start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <!-- font AweSome start -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.1/css/all.min.css"
+    integrity="sha512-9my9Mb2+0YO+I4PUCSwUYO7sEK21Y0STBAiFEYoWtd2VzLEZZ4QARDrZ30hdM1GlioHJ8o8cWQiy8IAb1hy/Hg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font AweSome end -->
+
+    <!-- link css start-->
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="./styles/about.css">
+    <link rel="stylesheet" href="./styles/tools_and_tech.css">
+    <link rel="stylesheet" href="./styles/project.css">
+    <link rel="stylesheet" href="./styles/contact.css">
+    <link rel="stylesheet" href="./styles/default.css">
+    <!-- Link css end -->
+</head>
+<body>
+    <!-- SECTION MOBILE MENU START -->
+    <section class="sidebar">
+        <nav>
+            <span>MENU</span>
+            <ul >
+                <li onclick=closeSidebar() id="closeMenuBtn"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#contact">Let's talk</a></li>
+            </ul>
+            <span>FOLLOW</span>
+            <ul>
+                <li><a  target="_blank" href="https://www.linkedin.com/in/vikas-vitekari/" >LinkedIn</a></li>
+                <li><a target="_blank" href="https://github.com/SilentWatcher">Github</a></li>
+                <li><a target="_blank" href="https://www.instagram.com/vitekarivikas/">Instagram</a></li>
+                <li><a target="_blank" href="https://twitter.com/VitekariVikas">twitter</a></li>
+            </ul>
+            <span>MAIL ME</span><br>
+            <a id="mail">vitekarvikas55@gmail.com</a>
+
+        </nav>
+    </section>
+    <!-- SECTION MOBIILE MENU END  -->
+    <!-- HEADER SECTION START -->
+    <header >
+        <nav>
+            <h1>Vikas Sr Vitekari</h1>
+            <ul class="defaultNav">
+                <li class="closeOnMobile" ><a href="#home">Home</a></li>
+                <li class="closeOnMobile"><a href="#about">About</a></li>
+                <li class="closeOnMobile"><a href="#project">Project</a></li>
+                <li class="closeOnMobile letsTalk" ><a href="#contact">Let's talk</a></li>
+                <li onclick=showSidebar() id="menuBtn"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></li>
+            </ul>
+        </nav>
+
+        
+    </header>
+    <!-- HEADER SECTION END -->
+    <main class="mainContainer">
+    <!-- SECTION HOME START -->
+    <section id="home">
+        <div class="homecontainer">
+            <p class="small_para">HELLO AND WELCOME</p>
+            <h1><span>I’m </span>Vikas, UI Designer <span>and</span> <br>Frontend Developer.</h1>
+            <p class="second_para">I design and build beautiful websites. I have been passionate about 
+                frontend design & development. Also I like spend my leisure time 
+                playing chess and video games.
+            </p>
+            <div>
+                <button>See my work</button>
+                <button>My Resume</button>
+            </div>
+        </div>
+        <div class="keep_scroll_icons"> 
+            <div class="scroll">
+                <img src="./assets/homeIcons/scroll.png" alt="scroll png"><span>Keep Scroll</span>
+            </div>
+            <div class="social_media">
+                <span>can follow me on</span>
+                <div class="social_icons">
+                    <a  target="_blank" href="https://github.com/SilentWatcher"><img   src="./assets/homeIcons/socialIcons/github.svg"  alt="Github"></a>
+                    <a  target="_blank" href="https://www.linkedin.com/in/vikas-vitekari/" ><img src="./assets/homeIcons/socialIcons/linkedin.svg" alt="LinkedIn"></a>
+                    <a target="_blank" href="https://www.instagram.com/vitekarivikas/"><img  src="./assets/homeIcons/socialIcons/instagram.svg" alt="instagram"></a>
+                    <a target="_blank" href="https://twitter.com/VitekariVikas"><img src="./assets/homeIcons/socialIcons/twitter.svg" alt="twitter"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SECTION HOME END -->
+    <!-- SECTION ABOUT START -->
+    <section id="about">
+        <div class="parentAbout">
+            <div class="aboutImg">
+                <img src="./assets/aboutIcons/frontendGuy.png" alt="frontendGuy">
+            </div>
+            <div class="aboutInfo">
+                <p class="para1">ABOUT ME</p>
+                <h3><span>A small</span> Introduction</h3>
+                <P class="para2">This is Vikas Shankar Vitekari, 2023 pass out hold Computer science Engineering from Bharati Vidyapeeth’s Engineering College, Kolhapur, India. Also I am a self taught UI designer and Frontend developer. Also I like spend my leisure time playing chess.</P>
+                <h4>What I like to do</h4>
+                <div class="whatilike">
+                    <div>
+                        <img src="./assets/aboutIcons/Design.png" alt="">
+                        <h4>Designing</h4>
+                        <p>Design posters, thumbnails, web UI using Figma, photoshop, illustrator.
+    
+                        </p>
+                    </div>                
+                    <div>
+                        <img src="./assets/aboutIcons/code.png" alt="">
+                        <h4>Development</h4>
+                        <p>
+                            Html, css, Tailwind css, Javascript, React.js, Next.js, Node.js, Express.js, Rest api,
+
+                        </p>
+                    </div>                
+                    <div>
+                        <img src="./assets/aboutIcons/chess.png" alt="">
+                        <h4>Chess</h4>
+                        <p>Chess lover, where each move tells a story of strategy and intellect.</p>
+                        
+                    </div>
+    
+                </div>
+            </div>
+
+        </div>
+    </section> 
+    <!-- SECTION ABOUT END -->  
+    <!--SECTION TOOLS AND TECH START  -->
+    <section id="toolsAndTech">
+        <div class="toolsParent">
+            <div>
+                <p class="para1">TOOLS & TECH</p>
+                <h1><span>My</span> Personal Favourite</h1>
+            </div>
+            <div class="toolsAllKnown">
+                <div>
+                    <img src="./assets/techTools/frontend.png" alt="frontend">
+                    <h4>Frontend Development</h4>
+                    <p>Html, Css, Scss, 
+                        Tailwind css, javascript, 
+                        React js, Next.js</p>
+                </div>                <div>
+                    <img src="./assets/techTools/backend.png" alt="backend">
+                    <h4>Backend
+                        Development</h4>
+                    <p>Node.js, Express.js, 
+                        REST api</p>
+                </div>                <div>
+                    <img src="./assets/techTools/vector-curve.png" alt="vector-curve">
+                    <h4>Design & Editing</h4>
+                    <p>Figma, Photoshop,  Premiere Pro </p>
+                </div>                <div>
+                    <img src="./assets/techTools/techstack.png" alt="techstack">
+                    <h4>Tech Stack</h4>
+                    <p>MERN Stack</p>
+                </div>   
+            </div>
+        </div>
+    </section>
+    <!--SECTION TOOLS AND TECH END  -->
+    <!-- SECTION PROJECT START -->
+    <section id="project">
+        <div>
+            <p class="para1">Projects</p>
+            <h1><span>My</span> Latest Projects </h1>
+        </div>
+
+        <div class="container">
+            <div class="projectChild" style="background: #E4A87F;">
+                <span class="tag">API integration</span>
+                <img src="./assets/projectPreview/currency_converter.png" alt="currency_converter">
+                <div class="projectInfo">
+                    <h2>Currency Converter</h2>
+                    <p>A lightweight tool for swift currency conversions.</p>
+                    <div>
+                        <span href="something">Live url</span>
+                        <span href="something">Source code</span>
+                    </div>
+                </div>
+            </div>            
+            <div class="projectChild" style="background: #B2B6FE;">
+                <span class="tag">Ui Design</span>
+                <img src="./assets/projectPreview/upskill_edu.png" alt="upskill_edu">
+                <div class="projectInfo">
+                    <h2>Upskill</h2>
+                    <p>Simplified educational site, intuitive UI for effective learning</p>
+                    <div>
+                        <span>Live url</span>
+                        <span>Source code</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projectChild" style="background: #C1E1FF;">
+                <span class="tag">API integration and Development</span>
+                <img src="./assets/projectPreview/weather_app.png" alt="weather_app">
+                <div class="projectInfo">
+                    <h2>Weather App</h2>
+                    <p>OpenWeatherMap Global weather with current, 5-day, hourly, 'feels like'</p>
+                    <div>
+                        <span>Live url</span>
+                        <span>Source code</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="projectChild" style="background: #96ABE4;">
+                <span class="tag">Development</span>
+                <img src="./assets/projectPreview/password_generator.png" alt="password_generator">
+                <div class="projectInfo">
+                    <h2>Password Generator</h2>
+                    <p>Generate alphanumric password</p>
+                    <div>
+                        <span>Live url</span>
+                        <span>Source code</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projectChild" style="background: #AA978A;">
+                <span class="tag">Ui Design</span>
+                <img src="./assets/projectPreview/fountain_force.png" alt="fountain_force">
+                <div class="projectInfo">
+                    <h2>Fountain Force</h2>
+                    <p>E-scools for lerners</p>
+                    <div>
+                        <span>Live url</span>
+                        <span>Source code</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projectChild" style="background: #DCC776;">
+                <span class="tag">Game</span>
+                <img src="./assets/projectPreview/simon_says.png" alt="simon_says">
+                <div class="projectInfo">
+                    <h2>Simon Says</h2>
+                    <p>Memory game. Test your memory</p>
+                    <div>
+                        <span>Live url</span>
+                        <span>Source code</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projectChild" style="background: #C5DBE4;">
+                <span class="tag">E-Commerce</span>
+                <img src="./assets/projectPreview/ecommerce.jpg" alt="ecommerce">
+                <div class="projectInfo">
+                    <h2>KartFlip</h2>
+                    <p>Online shopping</p>
+                    <span class="coming_soon">Coming soon</span>
+                    <div>
+                        <span href="">Live url</span>
+                        <span href="">Source code</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="projectChild" style="background: #ED809B;">
+                <span class="tag">Game</span>
+                <img src="./assets/projectPreview/avenger.png" alt="avenger">
+                <div class="projectInfo">
+                    <h2>Flip Card</h2>
+                    <p>As the fan of Avengers</p>
+                    <div>
+                        <span href="">Live url</span>
+                        <span href="">Source code</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="projectChild" style="background: #9AC8C8;">
+                <span class="tag">Ui Design</span>
+                <img src="./assets/projectPreview/business_card.png" alt="avenger">
+                <div class="projectInfo">
+                    <h2>Business Card</h2>
+                    <p>Distilled professionalism, expertise, and contact details in a glance.</p>
+                    <div>
+                        <span href="">Live url</span>
+                        <span href="">Source code</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <section id="contact">
+        <h1>
+            "As a coder, I create and learn, each line of code a move on the chessboard of challenges. It's not just about a job but mastering the dance of problem-solving—every algorithm a step closer to victory, every puzzle an opportunity to craft solutions."
+        </h1>
+    </section>
+    <!-- SECTION PROJECT END -->
+    </main>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

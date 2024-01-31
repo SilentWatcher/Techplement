@@ -1,0 +1,146 @@
+
+
+#project{
+    min-height: 100vh;
+    padding-inline: 6rem;
+}
+#project .para1{
+    font-family: "Sarpanch", serif;
+    letter-spacing: 4px;
+    font-size: .8rem;
+}
+
+#project h1{
+    font-family: "Signika", serif;
+    font-size: 3.5vw;
+    font-weight: 700;
+    margin: .9rem 0;
+    
+}
+#project h1 span{
+    font-weight: 400;
+}
+#project .container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .8rem;
+}
+
+.container .projectChild{
+    min-width:16rem ;
+    min-height:26rem ;
+
+    background: #dbd6d6;
+}
+
+
+@media (max-width:1024px){
+    #project .container{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+@media (max-width:768px){
+    #project .container{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    #project{
+        margin: 0;
+        padding: 2rem 1rem;
+    }
+}
+@media (max-width:640px){
+    #project .container{
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+    #project h1{
+        font-family: "Signika", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        margin: .9rem 0;
+        
+    }
+
+}
+
+#project .container .projectChild{
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #000 ;
+}
+    .projectChild .projectInfo .coming_soon{
+    background: #ffe030;
+    padding: .2rem;
+    font-size: 1rem;
+    position: absolute;
+    top: -1rem;
+    font-family: "Signika", serif;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding-inline:1rem;
+
+}
+
+.container .projectChild .tag{
+    padding: .4rem;
+    background: white;
+    font-family: "Signika", serif;
+    font-size:.8rem;
+    font-weight: 600;
+    border-radius:1rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    
+}
+.container .projectChild img{
+    height: 80%;
+    width: 70%;
+    position: absolute;
+    right:0 ;
+    bottom: 0;
+    object-fit: cover;
+    background: white;
+    box-shadow: 10px 5px 20px black;
+    border-radius: .8rem ;
+    border: .4rem solid black;
+    padding: .2rem;
+    transition: all .4s ease-in-out;
+
+}
+
+.container .projectChild img:hover{
+    transform: scale(1.15);
+    cursor: pointer;
+ 
+}
+.container .projectChild .projectInfo{
+    position: absolute;
+    width: 100%;
+    background-image: linear-gradient(to right, white, white,#000000b5);
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+
+
+}
+
+.container .projectChild .projectInfo h2{
+    font-size: 1.5rem;
+    margin-block: 1rem;
+}
+.container .projectChild .projectInfo p{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    /* max-width: 80%; */
+}
+.container .projectChild .projectInfo div span{
+    font-size: .8rem;
+    font-weight: 600;
+    margin-right: 1rem;
+    cursor: pointer;
+
+}
