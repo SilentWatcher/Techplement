@@ -3,6 +3,12 @@
     margin: 0;
     padding: 0;
 }
+
+html{
+
+    scroll-behavior: smooth;
+
+}
 /* HEADER SECTION START */
 header{
 
@@ -97,11 +103,15 @@ header nav h1{
 }
 .sidebar nav span{
     padding: 2rem  0  0  0 ;
-
+    font-size: 1rem;
+    font-family: "Sarpanch", serif;
+    letter-spacing: 2px;
+    color: grey;
 
 }
 .sidebar nav ul {
     padding: 1rem;
+    font-size: 1.5rem;
 }
 .sidebar nav ul li a:visited , #mail:visited{
     color: white;
