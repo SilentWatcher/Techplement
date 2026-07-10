@@ -1,67 +1,167 @@
-export default function About({ profile }) {
-  const { aboutParagraph = '', aboutCards = [] } = profile || {}
+import { useRef, useEffect, useState } from 'react'
 
-  const icons = [
-    '/assets/aboutIcons/Design.png',
-    '/assets/aboutIcons/code.png',
-    '/assets/aboutIcons/chess.png',
-  ]
+const cards = [
+  {
+    icon: '/assets/aboutIcons/Design.png',
+    title: 'Design',
+    desc: 'Crafting pixel-perfect interfaces with obsessive attention to detail, color theory, and motion design.',
+    stats: ['UI/UX', 'Figma', 'Prototype'],
+  },
+  {
+    icon: '/assets/aboutIcons/code.png',
+    title: 'Develop',
+    desc: 'Architecting scalable frontend systems with React, clean code, and performance-first thinking.',
+    stats: ['React', 'Next.js', 'TypeScript'],
+  },
+  {
+    icon: '/assets/aboutIcons/chess.png',
+    title: 'Strategize',
+    desc: 'Thinking multiple moves ahead — every component, every state, every edge case planned.',
+    stats: ['System Design', 'Optimization', 'Logic'],
+  },
+]
+
+function TypeWriter({ text, speed = 40 }) {
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    if (!text) return
+    setDisplayed('')
+    setDone(false)
+    let i = 0
+    const id = setInterval(() => {
+      i++
+      setDisplayed(text.slice(0, i))
+      if (i >= text.length) {
+        clearInterval(id)
+        setDone(true)
+      }
+    }, speed)
+    return () => clearInterval(id)
+  }, [text, speed])
 
   return (
-    <section id="about" className="py-24 px-6 bg-[#000000]">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="mb-12 opacity-0 animate-fade-in-up">
-          <p className="text-xs font-sarpanch tracking-[4px] text-[#ff4655]/80 uppercase mb-2">About</p>
-          <div className="divider max-w-xs" />
+    <span>
+      {displayed}
+      {!done && <span className="about-typing-cursor" />}
+    </span>
+  )
+}
+
+export default function About({ profile }) {
+  const { aboutParagraph = '' } = profile || {}
+  const [activeCard, setActiveCard] = useState(null)
+  const sectionRef = useRef(null)
+
+  return (
+    <section id="about" ref={sectionRef} className="about-section">
+      {/* SUBTLE GRID OVERLAY */}
+      <div className="about-grid-overlay" />
+
+      {/* HUD SIDE LABELS */}
+      <div className="about-hud about-hud--left">
+        <span className="about-hud-line" />
+        <span className="about-hud-text">IDENTITY</span>
+        <span className="about-hud-line" />
+      </div>
+      <div className="about-hud about-hud--right">
+        <span className="about-hud-line" />
+        <span className="about-hud-text">ORIGIN</span>
+        <span className="about-hud-line" />
+      </div>
+
+      <div className="about-container">
+        {/* HEADER */}
+        <div className="about-header">
+          <div className="about-badge">
+            <span className="about-badge-dot" />
+            <span className="about-badge-text">// SECTION_01</span>
+          </div>
+          <h2 className="about-title">
+            <span className="about-title-bracket">[</span>
+            <span className="about-title-main">About</span>
+            <span className="about-title-bracket">]</span>
+          </h2>
+          <div className="about-header-line" />
         </div>
 
-        <div className="flex gap-12 max-lg:flex-col items-start">
-          {/* Image panel */}
-          <div className="w-[30vw] max-lg:w-full max-lg:max-w-sm opacity-0 animate-fade-in-up-delay-1">
-            <div className="panel rounded-lg overflow-hidden">
+        {/* MAIN LAYOUT */}
+        <div className="about-layout">
+          {/* LEFT — IMAGE PANEL */}
+          <div className="about-image-panel">
+            <div className="about-image-frame">
+              <div className="about-image-scanner" />
               <img
                 src="/assets/aboutIcons/frontendGuy.png"
                 alt="frontend guy"
-                className="w-full h-auto object-cover"
+                className="about-image"
               />
+              <div className="about-image-corner about-image-corner--tl" />
+              <div className="about-image-corner about-image-corner--tr" />
+              <div className="about-image-corner about-image-corner--bl" />
+              <div className="about-image-corner about-image-corner--br" />
+            </div>
+            <div className="about-image-meta">
+              <span className="about-meta-key">STATUS</span>
+              <span className="about-meta-val">ACTIVE</span>
+              <span className="about-meta-divider">|</span>
+              <span className="about-meta-key">CLEARANCE</span>
+              <span className="about-meta-val">LEVEL_5</span>
             </div>
           </div>
 
-          {/* Content panel */}
-          <div className="flex-1 opacity-0 animate-fade-in-up-delay-2">
-            <div className="panel rounded-lg p-8">
-              <h2 className="font-sarpanch text-4xl lg:text-5xl font-bold tracking-[4px] text-white mb-4">
-                A small <span className="text-[#ff4655]">Introduction</span>
-              </h2>
-              <p className="font-oxygen text-sm sm:text-base text-[#e5e7eb]/60 max-w-2xl mb-12 leading-relaxed">
-                {aboutParagraph}
+          {/* RIGHT — CONTENT */}
+          <div className="about-content">
+            <div className="about-terminal-bar">
+              <span className="about-terminal-dot about-terminal-dot--r" />
+              <span className="about-terminal-dot about-terminal-dot--y" />
+              <span className="about-terminal-dot about-terminal-dot--g" />
+              <span className="about-terminal-path">~ /about/intro</span>
+            </div>
+
+            <div className="about-terminal-body">
+              <div className="about-line about-line--prompt">
+                <span className="about-prompt-symbol">❯</span>
+                <span className="about-prompt-cmd">cat introduction.txt</span>
+              </div>
+
+              <p className="about-paragraph">
+                <TypeWriter text={aboutParagraph} />
               </p>
 
-              <h3 className="font-sarpanch text-sm tracking-[3px] uppercase text-[#ff4655]/80 mb-6">
-                What I like to do
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {aboutCards.map((card, i) => (
-                  <div
-                    key={i}
-                    className="panel rounded-lg p-5 card-tilt"
-                  >
-                    <img
-                      src={card.icon || icons[i] || ''}
-                      alt={card.title}
-                      className="h-10 w-10 mb-4 opacity-80"
-                    />
-                    <h4 className="font-sarpanch text-sm tracking-[2px] uppercase text-white mb-2">
-                      {card.title}
-                    </h4>
-                    <p className="font-oxygen text-xs text-[#e5e7eb]/50 leading-relaxed">
-                      {card.description}
-                    </p>
-                  </div>
-                ))}
+              <div className="about-line about-line--prompt about-line--second">
+                <span className="about-prompt-symbol">❯</span>
+                <span className="about-prompt-cmd">./what-i-do.sh</span>
               </div>
+            </div>
+
+            {/* SKILL CARDS */}
+            <div className="about-cards-grid">
+              {cards.map((card, i) => (
+                <div
+                  key={i}
+                  className={`about-card ${activeCard === i ? 'about-card--active' : ''}`}
+                  onMouseEnter={() => setActiveCard(i)}
+                  onMouseLeave={() => setActiveCard(null)}
+                >
+                  <div className="about-card-glint" />
+                  <div className="about-card-header">
+                    <img src={card.icon} alt={card.title} className="about-card-icon" />
+                    <span className="about-card-number">0{i + 1}</span>
+                  </div>
+                  <h3 className="about-card-title">{card.title}</h3>
+                  <p className="about-card-desc">{card.desc}</p>
+                  <div className="about-card-tags">
+                    {card.stats.map((tag, j) => (
+                      <span key={j} className="about-card-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <div className="about-card-bar">
+                    <div className="about-card-bar-fill" style={{ width: `${60 + i * 20}%` }} />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
