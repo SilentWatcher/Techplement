@@ -25,6 +25,35 @@ export default function Navbar({ email = 'vitekarvikas55@gmail.com' }) {
           bg-[#070014]/80 backdrop-blur-xl
           border-b border-[#ff4655]/10"
       >
+        {/* V cutout decorative element */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+          <div className="relative" style={{ width: 120, height: 64 }}>
+            <div className="absolute inset-0" style={{
+              background: '#ff4655',
+              clipPath: 'polygon(0 10%, 70% 90%, 35% 90%, 0 50%)',
+              filter: 'blur(20px)',
+              opacity: 0.15,
+              animation: 'v-glow-pulse 4s ease-in-out infinite',
+            }} />
+            <div className="absolute inset-0" style={{
+              background: '#ff4655',
+              clipPath: 'polygon(100% 10%, 100% 50%, 88% 65%, 55% 65%)',
+              filter: 'blur(20px)',
+              opacity: 0.15,
+              animation: 'v-glow-pulse 4s ease-in-out infinite',
+            }} />
+            <div className="absolute inset-0" style={{
+              background: '#ff4655',
+              clipPath: 'polygon(0 10%, 70% 90%, 35% 90%, 0 50%)',
+              opacity: 0.06,
+            }} />
+            <div className="absolute inset-0" style={{
+              background: '#ff4655',
+              clipPath: 'polygon(100% 10%, 100% 50%, 88% 65%, 55% 65%)',
+              opacity: 0.06,
+            }} />
+          </div>
+        </div>
         <nav className="flex justify-between items-center px-6 mx-auto max-w-7xl h-16">
           {/* Logo mark */}
           <a href="#home" className="flex items-center gap-3 group">
