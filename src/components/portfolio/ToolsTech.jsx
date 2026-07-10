@@ -16,7 +16,7 @@ const CDN = {
   prisma: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg',
   redis: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg',
   redux: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg',
-  graphql: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-original.svg',
+  graphql: 'https://avatars.githubusercontent.com/u/12972006?s=200&v=4',
   aws: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg',
   docker: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
   git: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
@@ -26,7 +26,7 @@ const CDN = {
   websockets: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/socketio/socketio-original.svg',
   s3: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg',
   cloudinary: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudinary/cloudinary-original.svg',
-  zustand: 'https://raw.githubusercontent.com/pmndrs/zustand/main/docs/bear.png',
+  zustand: 'https://user-images.githubusercontent.com/958486/218346783-72be5ae3-b953-4dd7-b239-788a882fdad6.svg',
   mern: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg',
 }
 
@@ -113,6 +113,7 @@ export default function ToolsTech({ profile }) {
       <div className="stack-grid">
         {enriched.map((tech, i) => (
           <div key={i} className="stack-card">
+            <div className="stack-card-hover-fill" />
             <div className="stack-card-inner">
               <div className="stack-card-header">
                 <span>// {tech.category.toUpperCase()}</span>
