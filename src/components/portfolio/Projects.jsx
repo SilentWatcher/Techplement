@@ -2,29 +2,52 @@ import ProjectCard from './ProjectCard.jsx'
 
 export default function Projects({ projects = [] }) {
   return (
-    <section id="project" className="py-24 px-6 bg-[#000000]">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="mb-12 opacity-0 animate-fade-in-up">
-          <p className="text-xs font-sarpanch tracking-[4px] text-[#ff4655]/80 uppercase mb-2">Projects</p>
-          <div className="divider max-w-xs" />
+    <section id="project" className="projects-section">
+      <div className="projects-grid-bg" />
+
+      {/* Red blobs */}
+      <div className="projects-blob projects-blob--1" />
+      <div className="projects-blob projects-blob--2" />
+      <div className="projects-blob projects-blob--3" />
+
+      <div className="projects-container">
+        {/* HEADER */}
+        <div className="projects-header">
+          <div className="projects-badge">
+            <span className="projects-badge-dot" />
+            <span className="projects-badge-text">// DEPLOYMENTS</span>
+          </div>
+          <h2 className="projects-title">
+            <span className="projects-title-bracket">[</span>
+            <span className="projects-title-main">Projects</span>
+            <span className="projects-title-bracket">]</span>
+          </h2>
+          <div className="projects-header-line" />
+          <p className="projects-subtitle">
+            ACTIVE_BUILD &mdash; {projects.length} ENTRIES
+          </p>
         </div>
 
-        <h2 className="font-sarpanch text-4xl lg:text-5xl font-bold tracking-[4px] text-white mb-8 opacity-0 animate-fade-in-up-delay-1">
-          My <span className="text-[#ff4655]">Latest</span> Projects
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.map((p, i) => (
-            <div
-              key={p._id}
-              className="opacity-0"
-              style={{ animation: `fade-in-up 0.5s ease-out ${0.2 + i * 0.1}s forwards` }}
-            >
-              <ProjectCard project={p} />
-            </div>
-          ))}
-        </div>
+        {/* GRID */}
+        {projects.length === 0 ? (
+          <div className="projects-empty">
+            <span className="projects-empty-icon">◈</span>
+            <span className="projects-empty-text">NO_DEPLOYMENTS_FOUND</span>
+            <span className="projects-empty-cursor" />
+          </div>
+        ) : (
+          <div className="projects-grid">
+            {projects.map((p, i) => (
+              <div
+                key={p._id}
+                className="projects-grid-item"
+                style={{ '--i': i }}
+              >
+                <ProjectCard project={p} index={i} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )

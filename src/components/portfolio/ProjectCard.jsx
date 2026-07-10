@@ -1,39 +1,54 @@
-export default function ProjectCard({ project }) {
-  const { title, description, tag, image, liveUrl, sourceCodeUrl, comingSoon, bgColor } = project
+export default function ProjectCard({ project, index = 0 }) {
+  const { title, description, tag, image, liveUrl, sourceCodeUrl, comingSoon, bgColor, techStack } = project
 
   return (
-    <div
-      className="panel rounded-lg overflow-hidden group card-tilt"
-    >
-      {/* Image area */}
-      <div className="relative h-48 overflow-hidden" style={{ backgroundColor: bgColor || '#1a1a2e' }}>
-        {comingSoon && (
-          <span className="absolute top-3 left-3 z-10 px-2 py-0.5 text-[10px] font-sarpanch tracking-[2px] uppercase bg-[#ff4655] text-white">
-            Coming Soon
-          </span>
-        )}
-        <span className="absolute top-3 right-3 z-10 px-2 py-0.5 text-[10px] font-sarpanch tracking-[2px] uppercase bg-black/60 text-[#e5e7eb]/80 backdrop-blur-sm">
-          {tag}
+    <div className="sc-card">
+      {/* Cutout corner decorations */}
+      <div className="sc-corner sc-corner--tl" />
+      <div className="sc-corner sc-corner--tr" />
+      <div className="sc-corner sc-corner--bl" />
+      <div className="sc-corner sc-corner--br" />
+
+      {/* Top HUD bar */}
+      <div className="sc-hud-bar">
+        <span className="sc-hud-index">0{index + 1}</span>
+        <span className="sc-hud-tag">{tag || 'Web App'}</span>
+        <span className="sc-hud-status" data-live={!comingSoon}>
+          {comingSoon ? 'PENDING' : 'LIVE'}
         </span>
+      </div>
+
+      {/* Image area */}
+      <div className="sc-image-wrap" style={{ backgroundColor: bgColor || '#0a0a1a' }}>
+        {comingSoon && (
+          <div className="sc-coming-soon">
+            <span>COMING</span>
+            <span>SOON</span>
+          </div>
+        )}
 
         {image && (
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+            className="sc-image"
           />
         )}
 
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+        {/* Scan line overlay */}
+        <div className="sc-scan-overlay" />
+
+        {/* Hover action overlay */}
+        <div className="sc-action-overlay">
+          <div className="sc-action-bracket" />
           {liveUrl && (
             <a
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 text-[10px] font-sarpanch tracking-[3px] uppercase bg-[#ff4655] text-white hover:bg-[#ff4655]/80 transition-colors"
+              className="sc-action-btn"
             >
-              Live Demo
+              ◈ LAUNCH
             </a>
           )}
           {sourceCodeUrl && (
@@ -41,22 +56,39 @@ export default function ProjectCard({ project }) {
               href={sourceCodeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 text-[10px] font-sarpanch tracking-[3px] uppercase border border-white/40 text-white hover:bg-white/10 transition-colors"
+              className="sc-action-btn sc-action-btn--outline"
             >
-              Source Code
+              &lt;/&gt; CODE
             </a>
           )}
         </div>
       </div>
 
-      {/* Info */}
-      <div className="p-5">
-        <h3 className="font-sarpanch text-base tracking-[2px] uppercase text-white mb-2">
-          {title}
-        </h3>
-        <p className="font-oxygen text-xs text-[#e5e7eb]/50 leading-relaxed">
-          {description}
-        </p>
+      {/* Info area */}
+      <div className="sc-info">
+        <div className="sc-info-divider" />
+        <h3 className="sc-info-title">{title}</h3>
+        {description && (
+          <p className="sc-info-desc">{description}</p>
+        )}
+
+        {/* TECH STACK CHIPS */}
+        {techStack && techStack.length > 0 && (
+          <div className="sc-tech">
+            <div className="sc-tech-label">STACK</div>
+            <div className="sc-tech-chips">
+              {techStack.map((tech, j) => (
+                <span key={j} className="sc-tech-chip">{tech}</span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="sc-info-meta">
+          <span className="sc-meta-arrow">▶</span>
+          <span className="sc-meta-text">INSPECT</span>
+          <span className="sc-meta-bracket">//</span>
+        </div>
       </div>
     </div>
   )
