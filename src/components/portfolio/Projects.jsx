@@ -1,6 +1,7 @@
 import ProjectCard from './ProjectCard.jsx'
 
 export default function Projects({ projects = [] }) {
+  const visibleProjects = projects.filter(p => p.ispublished !== false)
   return (
     <section id="project" className="projects-section">
       <div className="projects-grid-bg" />
@@ -24,12 +25,12 @@ export default function Projects({ projects = [] }) {
           </h2>
           <div className="projects-header-line" />
           <p className="projects-subtitle">
-            ACTIVE_BUILD &mdash; {projects.length} ENTRIES
+            ACTIVE_BUILD &mdash; {visibleProjects.length} ENTRIES
           </p>
         </div>
 
         {/* GRID */}
-        {projects.length === 0 ? (
+        {visibleProjects.length === 0 ? (
           <div className="projects-empty">
             <span className="projects-empty-icon">◈</span>
             <span className="projects-empty-text">NO_DEPLOYMENTS_FOUND</span>
@@ -37,7 +38,7 @@ export default function Projects({ projects = [] }) {
           </div>
         ) : (
           <div className="projects-grid">
-            {projects.map((p, i) => (
+            {visibleProjects.map((p, i) => (
               <div
                 key={p._id}
                 className="projects-grid-item"

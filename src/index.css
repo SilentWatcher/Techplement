@@ -1981,26 +1981,26 @@ button:hover ~ #cursor-ring,
 
 .sc-hud-index {
   font-family: 'Orbitron', sans-serif;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
-  color: rgba(255, 70, 85, 0.4);
+  color: rgba(255, 70, 85, 0.5);
   letter-spacing: 1px;
 }
 
 .sc-hud-tag {
   font-family: 'Orbitron', sans-serif;
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
 }
 
 .sc-hud-status {
   margin-left: auto;
   font-family: 'Orbitron', sans-serif;
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 2px;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 2px;
   text-transform: uppercase;
 }
@@ -2130,7 +2130,7 @@ button:hover ~ #cursor-ring,
 
 /* Info section */
 .sc-info {
-  padding: 20px;
+  padding: 22px 24px;
   position: relative;
 }
 
@@ -2148,22 +2148,23 @@ button:hover ~ #cursor-ring,
 
 .sc-info-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #ffffff;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
 }
 
 .sc-info-desc {
   font-family: 'Oxygen', sans-serif;
-  font-size: 12px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 16px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -2175,7 +2176,7 @@ button:hover ~ #cursor-ring,
 }
 
 .sc-meta-arrow {
-  font-size: 8px;
+  font-size: 10px;
   color: #ff4655;
   animation: meta-pulse 2s ease-in-out infinite;
 }
@@ -2187,29 +2188,29 @@ button:hover ~ #cursor-ring,
 
 .sc-meta-text {
   font-family: 'Orbitron', sans-serif;
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 3px;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.35);
   text-transform: uppercase;
 }
 
 .sc-meta-bracket {
   margin-left: auto;
   font-family: 'Orbitron', sans-serif;
-  font-size: 8px;
-  color: rgba(255, 70, 85, 0.15);
+  font-size: 10px;
+  color: rgba(255, 70, 85, 0.2);
 }
 
 /* TECH STACK CHIPS */
 .sc-tech {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .sc-tech-label {
   font-family: 'Orbitron', sans-serif;
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 2px;
-  color: rgba(255, 70, 85, 0.3);
+  color: rgba(255, 70, 85, 0.4);
   margin-bottom: 6px;
 }
 
@@ -2220,20 +2221,20 @@ button:hover ~ #cursor-ring,
 }
 
 .sc-tech-chip {
-  padding: 2px 8px;
+  padding: 4px 10px;
   font-family: 'Oxygen', sans-serif;
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
   background: rgba(255, 70, 85, 0.06);
-  border: 1px solid rgba(255, 70, 85, 0.1);
-  border-radius: 2px;
+  border: 1px solid rgba(255, 70, 85, 0.12);
+  border-radius: 3px;
   transition: all 0.3s;
 }
 
 .sc-card:hover .sc-tech-chip {
-  color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 70, 85, 0.1);
-  border-color: rgba(255, 70, 85, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 70, 85, 0.12);
+  border-color: rgba(255, 70, 85, 0.3);
 }
 
 /* RED BLOBS */
@@ -2296,12 +2297,12 @@ button:hover ~ #cursor-ring,
   }
 
   .sc-info {
-    padding: 14px;
+    padding: 16px 18px;
   }
 
   .sc-action-btn {
     padding: 8px 14px;
-    font-size: 8px;
+    font-size: 9px;
   }
 
   .sc-card {

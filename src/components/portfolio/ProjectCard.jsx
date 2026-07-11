@@ -69,7 +69,7 @@ export default function ProjectCard({ project, index = 0 }) {
         <div className="sc-info-divider" />
         <h3 className="sc-info-title">{title}</h3>
         {description && (
-          <p className="sc-info-desc">{description}</p>
+          <p className="sc-info-desc" title={description}>{description}</p>
         )}
 
         {/* TECH STACK CHIPS */}

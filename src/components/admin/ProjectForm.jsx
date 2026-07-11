@@ -10,6 +10,7 @@ const empty = {
   sourceCodeUrl: '',
   bgColor: '#dbd6d6',
   comingSoon: false,
+  ispublished: true,
   order: 0,
 }
 
@@ -89,6 +90,12 @@ export default function ProjectForm({ project, onDone }) {
           <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
             <input type="checkbox" checked={form.comingSoon} onChange={(e) => set('comingSoon', e.target.checked)} className="rounded" />
             Coming Soon
+          </label>
+        </div>
+        <div className="col-span-2">
+          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+            <input type="checkbox" checked={form.ispublished !== false} onChange={(e) => set('ispublished', e.target.checked)} className="rounded" />
+            Published
           </label>
         </div>
         <div className="col-span-2">

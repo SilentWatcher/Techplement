@@ -8,6 +8,7 @@ const projectSchema = new mongoose.Schema({
   liveUrl: { type: String, default: '' },
   sourceCodeUrl: { type: String, default: '' },
   comingSoon: { type: Boolean, default: false },
+  ispublished: { type: Boolean, default: true },
   bgColor: { type: String, default: '#dbd6d6' },
   order: { type: Number, default: 0 },
 })
