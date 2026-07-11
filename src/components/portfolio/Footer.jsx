@@ -1,4 +1,7 @@
+import { useTheme } from '../../context/ThemeContext.jsx'
+
 export default function Footer({ profile }) {
+  const { theme } = useTheme()
   const { quote = '', email = 'vitekarvikas55@gmail.com', socialLinks: social = {} } = profile || {}
 
   const socialIcons = [
@@ -9,7 +12,7 @@ export default function Footer({ profile }) {
   ].filter((s) => s.url)
 
   return (
-    <footer id="contact" className="py-24 px-6 bg-[#000000]">
+    <footer id="contact" className="py-24 px-6 bg-white dark:bg-[#000000] transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <div className="mb-12 opacity-0 animate-fade-in-up">
@@ -19,7 +22,7 @@ export default function Footer({ profile }) {
 
         {/* Quote panel */}
         <div className="panel rounded-lg p-8 md:p-12 mb-12 max-w-3xl opacity-0 animate-fade-in-up-delay-1">
-          <h1 className="font-pinyon text-2xl md:text-3xl text-[#e5e7eb]/70 leading-relaxed">
+          <h1 className="font-pinyon text-2xl md:text-3xl text-gray-500 dark:text-[#e5e7eb]/70 leading-relaxed transition-colors duration-300">
             {quote}
           </h1>
         </div>
@@ -29,11 +32,11 @@ export default function Footer({ profile }) {
           <div className="flex justify-between items-start flex-wrap gap-8 max-md:flex-col">
             <div>
               <p className="text-[10px] font-sarpanch tracking-[4px] text-[#ff4655]/60 uppercase mb-2">Something in mind</p>
-              <h2 className="font-sarpanch text-3xl tracking-[4px] uppercase text-white">Let&rsquo;s talk.</h2>
+              <h2 className="font-sarpanch text-3xl tracking-[4px] uppercase text-gray-900 dark:text-white transition-colors duration-300">Let&rsquo;s talk.</h2>
             </div>
             <div>
               <p className="text-[10px] font-sarpanch tracking-[4px] text-[#ff4655]/60 uppercase mb-2">Drop a mail</p>
-              <p className="font-oxygen text-sm text-[#e5e7eb]/70">{email}</p>
+              <p className="font-oxygen text-sm text-gray-500 dark:text-[#e5e7eb]/70 transition-colors duration-300">{email}</p>
             </div>
             <div>
               <p className="text-[10px] font-sarpanch tracking-[4px] text-[#ff4655]/60 uppercase mb-2">Follow</p>
@@ -42,7 +45,7 @@ export default function Footer({ profile }) {
                   <a key={s.key} href={s.url} target="_blank" rel="noopener noreferrer"
                     className="opacity-50 hover:opacity-100 transition-opacity"
                   >
-                    <img src={s.icon} alt={s.key} className="h-5 w-5 brightness-0 invert" />
+                    <img src={s.icon} alt={s.key} className={`h-5 w-5 ${theme === 'dark' ? 'brightness-0 invert' : ''}`} />
                   </a>
                 ))}
               </div>
@@ -52,10 +55,10 @@ export default function Footer({ profile }) {
           <div className="divider mt-8 mb-4" />
 
           <div className="flex justify-between items-center flex-wrap gap-2 max-md:flex-col max-md:items-start">
-            <p className="font-oxygen text-[10px] text-[#e5e7eb]/30 tracking-[2px] uppercase">
+            <p className="font-oxygen text-[10px] text-gray-400 dark:text-[#e5e7eb]/30 tracking-[2px] uppercase transition-colors duration-300">
               Copyright 2024 — All rights reserved.
             </p>
-            <p className="font-oxygen text-[10px] text-[#e5e7eb]/30 tracking-[2px] uppercase">
+            <p className="font-oxygen text-[10px] text-gray-400 dark:text-[#e5e7eb]/30 tracking-[2px] uppercase transition-colors duration-300">
               Designed in Figma · Developed in React + Tailwind
             </p>
           </div>

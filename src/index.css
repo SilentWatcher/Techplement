@@ -2314,3 +2314,365 @@ button:hover ~ #cursor-ring,
     );
   }
 }
+
+/* ================================================================
+   LIGHT MODE OVERRIDES
+   ================================================================ */
+
+/* --- GLOBAL --- */
+:root:not(.dark) body {
+  @apply bg-[#f5f5f7] text-[#1a1a2e];
+}
+
+:root:not(.dark) ::-webkit-scrollbar-track {
+  background: #f0f0f2;
+}
+
+:root:not(.dark) ::selection {
+  background: rgba(255, 70, 85, 0.2);
+  color: #1a1a2e;
+}
+
+/* --- PANEL --- */
+:root:not(.dark) .panel {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+:root:not(.dark) .panel:hover {
+  border-color: rgba(255, 70, 85, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+:root:not(.dark) .panel::before,
+:root:not(.dark) .panel::after {
+  border-color: rgba(255, 70, 85, 0.3);
+}
+
+:root:not(.dark) .panel:hover::before,
+:root:not(.dark) .panel:hover::after {
+  border-color: #ff4655;
+}
+
+:root:not(.dark) .panel-corner-bl,
+:root:not(.dark) .panel-corner-tr {
+  border-color: rgba(255, 70, 85, 0.2);
+}
+
+:root:not(.dark) .panel:hover .panel-corner-bl,
+:root:not(.dark) .panel:hover .panel-corner-tr {
+  border-color: rgba(255, 70, 85, 0.6);
+}
+
+/* --- DIVIDER --- */
+:root:not(.dark) .divider::before {
+  background: linear-gradient(90deg, rgba(255, 70, 85, 0.4), rgba(255, 70, 85, 0.08));
+}
+
+:root:not(.dark) .divider::after {
+  background: linear-gradient(90deg, rgba(255, 70, 85, 0.08), transparent);
+}
+
+/* --- ABOUT SECTION --- */
+:root:not(.dark) .about-section {
+  background: #f5f5f7;
+}
+
+:root:not(.dark) .about-grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 70, 85, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 70, 85, 0.04) 1px, transparent 1px);
+}
+
+:root:not(.dark) .about-title-main {
+  color: #1a1a2e;
+  text-shadow: none;
+}
+
+:root:not(.dark) .about-meta-key {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+:root:not(.dark) .about-hud-text {
+  color: rgba(255, 70, 85, 0.5);
+}
+
+/* Terminal */
+:root:not(.dark) .about-terminal-bar {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:root:not(.dark) .about-terminal-path {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+:root:not(.dark) .about-terminal-body {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:root:not(.dark) .about-prompt-cmd {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+:root:not(.dark) .about-paragraph {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* About cards */
+:root:not(.dark) .about-card {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+:root:not(.dark) .about-card:hover,
+:root:not(.dark) .about-card--active {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 70, 85, 0.3);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+:root:not(.dark) .about-card-title {
+  color: #1a1a2e;
+}
+
+:root:not(.dark) .about-card-desc {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+:root:not(.dark) .about-card-number {
+  color: rgba(255, 70, 85, 0.25);
+}
+
+:root:not(.dark) .about-card:hover .about-card-number,
+:root:not(.dark) .about-card--active .about-card-number {
+  color: rgba(255, 70, 85, 0.6);
+}
+
+:root:not(.dark) .about-card-tag {
+  border-color: rgba(255, 70, 85, 0.15);
+  color: rgba(255, 70, 85, 0.6);
+}
+
+:root:not(.dark) .about-card:hover .about-card-tag,
+:root:not(.dark) .about-card--active .about-card-tag {
+  border-color: rgba(255, 70, 85, 0.35);
+  color: rgba(255, 70, 85, 0.8);
+  background: rgba(255, 70, 85, 0.04);
+}
+
+:root:not(.dark) .about-card-bar {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* --- STACK / TECH SECTION --- */
+:root:not(.dark) .stack-section {
+  background: #f0f0f2;
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(255, 70, 85, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(255, 70, 85, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255, 70, 85, 0.03) 0%, transparent 40%);
+}
+
+:root:not(.dark) .stack-section::before {
+  background-image: linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
+}
+
+:root:not(.dark) .stack-title {
+  color: #1a1a2e;
+  text-shadow: none;
+}
+
+:root:not(.dark) .stack-subtitle {
+  color: #6b7280;
+}
+
+:root:not(.dark) .stack-bar {
+  color: #9ca3af;
+}
+
+:root:not(.dark) .stack-hud-left,
+:root:not(.dark) .stack-hud-right {
+  border-color: rgba(255, 70, 85, 0.2);
+}
+
+:root:not(.dark) .stack-hud-label-left,
+:root:not(.dark) .stack-hud-label-right {
+  color: rgba(255, 70, 85, 0.4);
+}
+
+/* Stack cards */
+:root:not(.dark) .stack-card {
+  background: #ffffff;
+  border-color: rgba(255, 70, 85, 0.2);
+  border-top-color: #ff1f32;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+:root:not(.dark) .stack-card::after {
+  background: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.04);
+}
+
+:root:not(.dark) .stack-card-header {
+  color: #9ca3af;
+}
+
+:root:not(.dark) .stack-card:hover .stack-card-header {
+  color: #1a1a2e;
+}
+
+:root:not(.dark) .stack-tech-name {
+  color: #1a1a2e;
+}
+
+:root:not(.dark) .stack-tech-type {
+  color: #ff3c4c;
+}
+
+:root:not(.dark) .stack-card-icon img {
+  filter: none;
+}
+
+/* --- PROJECTS SECTION --- */
+:root:not(.dark) .projects-section {
+  background: #ffffff;
+}
+
+:root:not(.dark) .projects-blob {
+  opacity: 0.1;
+}
+
+:root:not(.dark) .projects-title-main {
+  color: #1a1a2e;
+  text-shadow: none;
+}
+
+:root:not(.dark) .projects-subtitle {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+:root:not(.dark) .projects-empty-text {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+/* Project cards - SCI-FI */
+:root:not(.dark) .sc-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(8px);
+}
+
+:root:not(.dark) .sc-card::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 70, 85, 0.02) 50%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+}
+
+:root:not(.dark) .sc-card:hover {
+  border-color: rgba(255, 70, 85, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08), 0 0 24px rgba(255, 70, 85, 0.06);
+}
+
+:root:not(.dark) .sc-corner {
+  border-color: rgba(255, 70, 85, 0.2);
+}
+
+:root:not(.dark) .sc-card:hover .sc-corner {
+  border-color: rgba(255, 70, 85, 0.5);
+}
+
+:root:not(.dark) .sc-hud-bar {
+  background: rgba(255, 70, 85, 0.03);
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+:root:not(.dark) .sc-hud-index {
+  color: rgba(255, 70, 85, 0.5);
+}
+
+:root:not(.dark) .sc-hud-tag {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+:root:not(.dark) .sc-hud-status[data-live="true"] {
+  color: #16a34a;
+  border-color: rgba(22, 163, 74, 0.3);
+  background: rgba(22, 163, 74, 0.06);
+}
+
+:root:not(.dark) .sc-hud-status[data-live="false"] {
+  color: rgba(0, 0, 0, 0.35);
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+:root:not(.dark) .sc-image-wrap {
+  background-color: #f0f0f2 !important;
+}
+
+:root:not(.dark) .sc-coming-soon span {
+  color: rgba(0, 0, 0, 0.1);
+}
+
+:root:not(.dark) .sc-action-overlay {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+:root:not(.dark) .sc-info {
+  color: #1a1a2e;
+}
+
+:root:not(.dark) .sc-info-title {
+  color: #1a1a2e;
+  text-shadow: none;
+}
+
+:root:not(.dark) .sc-info-desc {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+:root:not(.dark) .sc-meta-text {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+:root:not(.dark) .sc-meta-bracket {
+  color: rgba(255, 70, 85, 0.15);
+}
+
+:root:not(.dark) .sc-tech-chip {
+  color: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 70, 85, 0.04);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+:root:not(.dark) .sc-card:hover .sc-tech-chip {
+  color: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 70, 85, 0.08);
+  border-color: rgba(255, 70, 85, 0.2);
+}
+
+/* --- FLIP CARD --- */
+:root:not(.dark) .flip-card-front {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+:root:not(.dark) .flip-card-front::before,
+:root:not(.dark) .flip-card-front::after {
+  border-color: rgba(255, 70, 85, 0.25);
+}
+
+:root:not(.dark) .flip-card-back {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 70, 85, 0.2);
+}
