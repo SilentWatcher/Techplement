@@ -1,3 +1,5 @@
+import { getTechIconUrl } from '../../data/techIcons.js'
+
 export default function ProjectCard({ project, index = 0 }) {
   const { title, description, tag, image, liveUrl, sourceCodeUrl, comingSoon, bgColor, techStack } = project
 
@@ -72,14 +74,22 @@ export default function ProjectCard({ project, index = 0 }) {
           <p className="sc-info-desc" title={description}>{description}</p>
         )}
 
-        {/* TECH STACK CHIPS */}
+        {/* TECH STACK WITH ICONS */}
         {techStack && techStack.length > 0 && (
           <div className="sc-tech">
             <div className="sc-tech-label">STACK</div>
             <div className="sc-tech-chips">
-              {techStack.map((tech, j) => (
-                <span key={j} className="sc-tech-chip">{tech}</span>
-              ))}
+              {techStack.map((tech, j) => {
+                const iconUrl = getTechIconUrl(tech)
+                return (
+                  <span key={j} className="sc-tech-chip">
+                    {iconUrl && (
+                      <img src={iconUrl} alt={tech} className="sc-tech-icon" />
+                    )}
+                    {tech}
+                  </span>
+                )
+              })}
             </div>
           </div>
         )}

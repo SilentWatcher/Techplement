@@ -4,12 +4,39 @@ export default function Projects({ projects = [] }) {
   const visibleProjects = projects.filter(p => p.ispublished !== false)
   return (
     <section id="project" className="projects-section">
+      {/* Layer 1: Gradient base */}
+      <div className="projects-gradient-base" />
+
+      {/* Layer 2: Tech grid */}
       <div className="projects-grid-bg" />
 
-      {/* Red blobs */}
+      {/* Layer 3: Diagonal scan lines */}
+      <div className="projects-scanlines" />
+
+      {/* Layer 4: Corner HUD brackets */}
+      <div className="projects-hud projects-hud--tl" />
+      <div className="projects-hud projects-hud--tr" />
+      <div className="projects-hud projects-hud--bl" />
+      <div className="projects-hud projects-hud--br" />
+
+      {/* Layer 5: Animated blobs */}
       <div className="projects-blob projects-blob--1" />
       <div className="projects-blob projects-blob--2" />
       <div className="projects-blob projects-blob--3" />
+      <div className="projects-blob projects-blob--4" />
+
+      {/* Layer 6: Floating particles */}
+      <div className="projects-particle projects-particle--1" />
+      <div className="projects-particle projects-particle--2" />
+      <div className="projects-particle projects-particle--3" />
+      <div className="projects-particle projects-particle--4" />
+      <div className="projects-particle projects-particle--5" />
+      <div className="projects-particle projects-particle--6" />
+
+      {/* Layer 7: Horizontal accent lines */}
+      <div className="projects-accent-line projects-accent-line--1" />
+      <div className="projects-accent-line projects-accent-line--2" />
+      <div className="projects-accent-line projects-accent-line--3" />
 
       <div className="projects-container">
         {/* HEADER */}

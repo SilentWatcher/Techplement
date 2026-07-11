@@ -15,6 +15,8 @@ const projects = [
   { title: 'Flip Card', tag: 'Game', image: '/assets/projectPreview/avenger.png', liveUrl: 'https://silentwatcher.github.io/AVENGER-flip-card-game/', sourceCodeUrl: 'https://github.com/SilentWatcher/AVENGER-flip-card-game', bgColor: '#ED809B', ispublished: false, order: 8 },
   { title: 'Business Card', tag: 'Ui Design', image: '/assets/projectPreview/business_card.png', sourceCodeUrl: 'https://github.com/SilentWatcher/portfolio', bgColor: '#9AC8C8', ispublished: false, order: 9 },
   { title: 'Background Changer', tag: 'Ui Design', image: '/assets/projectPreview/background_changer.png', liveUrl: 'https://background-changer-btn-react.netlify.app/', sourceCodeUrl: 'https://github.com/SilentWatcher/Background_Changer', bgColor: '#aeecf7', ispublished: false, order: 10 },
+  { title: 'Surypura Grampanchayat', description: 'Official website for Surypura Grampanchayat with civic info, services, and public notices', tag: 'Web Development', image: '/assets/projectPreview/surypura-grampanchayt.png', liveUrl: 'https://surypura-grampanchayt.netlify.app/', sourceCodeUrl: 'https://github.com/SilentWatcher/surypura-grampanchayt-website', bgColor: '#4A90D9', ispublished: true, order: 11 },
+  { title: 'Project Pilot', description: 'Full-stack project management tool with frontend and backend', tag: 'Full Stack', image: '/assets/projectPreview/project-pilot.png', liveUrl: 'https://project-pilot-fe.onrender.com', sourceCodeUrl: 'https://github.com/SilentWatcher/project_pilot_fe', bgColor: '#6C5CE7', ispublished: true, order: 12, techStack: ['React', 'Tailwind', 'MongoDB'] },
 ]
 
 async function seed() {

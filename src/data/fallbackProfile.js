@@ -1,7 +1,7 @@
 const fallbackProfile = {
   name: 'Vikas Sr Vitekari',
   title: 'UI Designer and Frontend Developer',
-  bio: 'I design and build beautiful websites. I have been passionate about frontend design & development.',
+  bio: 'Full Stack Developer with 2+ years of experience building scalable SaaS and mobile applications. Proven track record of improving performance, reducing manual effort, and delivering production-ready systems using React, Node.js, and AWS. Focused on clean architecture, system design, and real-world impact.',
   aboutParagraph: 'This is Vikas Shankar Vitekari, 2023 pass out hold Computer science Engineering from Bharati Vidyapeeth\'s Engineering College, Kolhapur, India. Also I am a self taught UI designer and Frontend developer.',
   email: 'vitekarvikas55@gmail.com',
   resumeUrl: 'https://drive.google.com/file/d/1RJnp6a9lYDaeESuzf-SW-1-OwYUfjpfg/view?usp=sharing',

@@ -1,4 +1,5 @@
 import { useTheme } from '../../context/ThemeContext.jsx'
+import MouseGlow from './MouseGlow.jsx'
 
 export default function Footer({ profile }) {
   const { theme } = useTheme()
@@ -12,23 +13,26 @@ export default function Footer({ profile }) {
   ].filter((s) => s.url)
 
   return (
-    <footer id="contact" className="py-24 px-6 bg-white dark:bg-[#000000] transition-colors duration-300">
-      <div className="max-w-7xl mx-auto">
+    <footer id="contact" className="relative py-24 px-6 bg-white dark:bg-black transition-colors duration-300 overflow-hidden">
+      {/* Mouse-following glow background */}
+      <MouseGlow />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="mb-12 opacity-0 animate-fade-in-up">
+        <div className="mb-12 opacity-0 animate-fade-in-up text-center">
           <p className="text-xs font-sarpanch tracking-[4px] text-[#ff4655]/80 uppercase mb-2">Contact</p>
-          <div className="divider max-w-xs" />
+          <div className="divider max-w-xs mx-auto" />
         </div>
 
         {/* Quote panel */}
-        <div className="panel rounded-lg p-8 md:p-12 mb-12 max-w-3xl opacity-0 animate-fade-in-up-delay-1">
+        <div className="contact-card rounded-lg p-8 md:p-12 mb-12 max-w-3xl mx-auto opacity-0 animate-fade-in-up-delay-1">
           <h1 className="font-pinyon text-2xl md:text-3xl text-gray-500 dark:text-[#e5e7eb]/70 leading-relaxed transition-colors duration-300">
             {quote}
           </h1>
         </div>
 
         {/* Contact bar */}
-        <div className="panel rounded-lg p-8 opacity-0 animate-fade-in-up-delay-2">
+        <div className="contact-card rounded-lg p-8 opacity-0 animate-fade-in-up-delay-2">
           <div className="flex justify-between items-start flex-wrap gap-8 max-md:flex-col">
             <div>
               <p className="text-[10px] font-sarpanch tracking-[4px] text-[#ff4655]/60 uppercase mb-2">Something in mind</p>
