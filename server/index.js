@@ -9,6 +9,7 @@ import profileRoutes from './routes/profile.js'
 import projectRoutes from './routes/projects.js'
 import contentRoutes from './routes/content.js'
 import techRoutes from './routes/tech.js'
+import contactRoutes from './routes/contact.js'
 import metricsRoutes from './routes/metrics.js'
 import auth from './middleware/auth.js'
 import cloudinary from './cloudinary.js'
@@ -35,6 +36,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 // Public content API
 app.use('/api/v1', contentRoutes)
 app.use('/api/v1/tech', techRoutes)
+app.use('/api/v1/contact', contactRoutes)
+app.use('/api/contact', contactRoutes)
 app.use('/api/v1/metrics', metricsRoutes)
 
 // Legacy routes + v1 aliases

@@ -5,7 +5,9 @@ import Home from '../../components/portfolio/Home.jsx'
 import About from '../../components/portfolio/About.jsx'
 import ToolsTech from '../../components/portfolio/ToolsTech.jsx'
 import Projects from '../../components/portfolio/Projects.jsx'
+import Contact from '../../components/portfolio/Contact.jsx'
 import Footer from '../../components/portfolio/Footer.jsx'
+import MusicPlayer from '../../components/portfolio/MusicPlayer.jsx'
 import Cursor from '../../components/portfolio/Cursor.jsx'
 
 function upsertMeta(name, content, attribute = 'name') {
@@ -51,7 +53,9 @@ export default function PortfolioLayout({ content }) {
       <About profile={profile} section={settings.about} />
       <ToolsTech tech={tech} section={settings.tech} />
       <Projects projects={projects} section={settings.projects} />
+      <Contact profile={profile} section={settings.contact} />
       <Footer profile={profile} section={settings.footer} />
+      <MusicPlayer />
     </main>
   )
 }

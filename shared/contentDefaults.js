@@ -127,7 +127,7 @@ export const defaultSiteSettings = {
     heading: "Let's talk.",
     emailLabel: 'Drop a mail',
     followLabel: 'Follow',
-    copyright: 'Copyright 2024 — All rights reserved.',
+    copyright: 'Copyright 2026 — All rights reserved.',
     credit: 'Designed in Figma · Developed in React + Tailwind',
   },
 }

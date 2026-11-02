@@ -43,6 +43,10 @@ export const uploadImage = (file) => {
   return api.post('/v1/upload', fd).then((r) => r.data)
 }
 
+// Contact
+export const sendContactMessage = (data) =>
+  api.post('/v1/contact', data).then((r) => r.data)
+
 // Analytics
 export const getPublicMetrics = (visitorId) =>
   api.get('/v1/metrics/public', { params: { visitorId } }).then((r) => r.data)
