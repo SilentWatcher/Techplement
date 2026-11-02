@@ -10,7 +10,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server/index.js",
-    "seed": "node server/seed.js"
+    "seed": "node server/seed.js",
+    "migrate": "node server/migrate.js"
   },
   "dependencies": {
     "react": "^19.0.0",

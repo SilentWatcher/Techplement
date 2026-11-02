@@ -1,16 +1,32 @@
 import { useState } from 'react'
 import { createProject, updateProject, uploadImage } from '../../api/client.js'
+import {
+  AddButton,
+  Card,
+  Field,
+  ListControls,
+  SaveButton,
+  TextArea,
+  TextInput,
+  Toggle,
+  inputClass,
+  moveItem,
+  smallInputClass,
+} from './AdminUI.jsx'
 
 const empty = {
   title: '',
+  slug: '',
   description: '',
   tag: '',
   image: '',
-  liveUrl: '',
-  sourceCodeUrl: '',
-  bgColor: '#dbd6d6',
-  comingSoon: false,
+  imageAlt: '',
+  links: [],
+  techStack: [],
+  status: 'live',
+  featured: false,
   ispublished: true,
+  bgColor: '#dbd6d6',
   order: 0,
 }
 
@@ -19,11 +35,33 @@ export default function ProjectForm({ project, onDone }) {
   const [saving, setSaving] = useState(false)
   const editing = !!project
 
-  const set = (key, val) => setForm((f) => ({ ...f, [key]: val }))
+  const set = (key, value) => setForm((current) => ({ ...current, [key]: value }))
 
-  const handleImage = async (e) => {
-    const file = e.target.files[0]
-    if (!file) return
+  const updateLink = (index, key, value) => {
+    const links = [...(form.links || [])]
+    links[index] = { ...links[index], [key]: value }
+    set('links', links)
+  }
+  const addLink = () => {
+    const types = ['live', 'source', 'custom']
+    set('links', [
+      ...(form.links || []),
+      {
+        label: 'Live',
+        url: '',
+        type: types[Math.min(form.links?.length || 0, 2)],
+        order: form.links?.length || 0,
+        visible: true,
+      },
+    ])
+  }
+  const removeLink = (index) => set('links', form.links.filter((_, i) => i !== index))
+  const reorderLink = (index, direction) => {
+    const links = moveItem(form.links, index, direction).map((link, order) => ({ ...link, order }))
+    set('links', links)
+  }
+
+  const handleImage = async (file) => {
     try {
       const { url } = await uploadImage(file)
       set('image', url)
@@ -46,76 +84,110 @@ export default function ProjectForm({ project, onDone }) {
     }
   }
 
-  const inputClass =
-    'w-full border rounded-lg px-3 py-2 font-oxygen text-sm bg-white dark:bg-[#1a1a24] border-gray-300 dark:border-white/10 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-colors'
-
   return (
-    <form onSubmit={handleSubmit} className="bg-white dark:bg-[#12121a] p-6 rounded-xl border border-gray-200 dark:border-white/5 shadow-sm max-w-xl transition-colors">
-      <h2 className="font-signika text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-        {editing ? 'Edit Project' : 'New Project'}
-      </h2>
-      <div className="grid grid-cols-2 gap-4 mb-4">
-        <div className="col-span-2">
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Title</label>
-          <input className={inputClass} value={form.title} onChange={(e) => set('title', e.target.value)} required />
+    <form onSubmit={handleSubmit} className="mb-6">
+      <Card className="max-w-5xl">
+        <div className="admin-card-head">
+          <div>
+            <h2 className="admin-card-title">{editing ? 'Edit Project' : 'New Project'}</h2>
+            <p className="admin-card-sub">All fields publish to the live site content API.</p>
+          </div>
+          <span className="admin-badge admin-badge--neutral">{editing ? 'Editing' : 'Draft'}</span>
         </div>
-        <div className="col-span-2">
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Description</label>
-          <input className={inputClass} value={form.description} onChange={(e) => set('description', e.target.value)} />
+
+        <p className="admin-form-section-title">Core Details</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <TextInput label="Title" value={form.title || ''} onChange={(e) => set('title', e.target.value)} required />
+          <TextInput label="Slug (auto if blank)" value={form.slug || ''} onChange={(e) => set('slug', e.target.value)} />
+          <TextArea label="Description" className="md:col-span-2" rows={2} value={form.description || ''} onChange={(e) => set('description', e.target.value)} />
+          <TextInput label="Tag / Category" value={form.tag || ''} onChange={(e) => set('tag', e.target.value)} />
+          <TextInput label="Order" type="number" value={form.order ?? 0} onChange={(e) => set('order', Number(e.target.value))} />
+
+          <Field label="Status">
+            <select className={inputClass} value={form.status || 'live'} onChange={(e) => set('status', e.target.value)}>
+              <option value="live">Live</option>
+              <option value="coming-soon">Coming Soon</option>
+              <option value="archived">Archived</option>
+            </select>
+          </Field>
+          <Field label="Background Color">
+            <div className="flex gap-2 items-center">
+              <input type="color" className="admin-input admin-color" value={form.bgColor || '#dbd6d6'} onChange={(e) => set('bgColor', e.target.value)} />
+              <span className="admin-hint mt-0">{form.bgColor}</span>
+            </div>
+          </Field>
+
+          <div className="md:col-span-2 flex flex-wrap gap-6 admin-toggle-row">
+            <Toggle label="Published" checked={form.ispublished !== false} onChange={(value) => set('ispublished', value)} />
+            <Toggle label="Featured" checked={form.featured === true} onChange={(value) => set('featured', value)} />
+          </div>
+
+          <TextInput label="Image URL" className="md:col-span-2" value={form.image || ''} onChange={(e) => set('image', e.target.value)} />
+          <TextInput label="Image Alt Text" className="md:col-span-2" value={form.imageAlt || ''} onChange={(e) => set('imageAlt', e.target.value)} />
+          <Field label="Upload Image" className="md:col-span-2">
+            <input type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && handleImage(e.target.files[0])} className="admin-file" />
+            {form.image && <img src={form.image} alt="preview" className="admin-image-preview" />}
+          </Field>
+
+          <TextInput
+            label="Tech Stack (comma separated)"
+            className="md:col-span-2"
+            value={(form.techStack || []).join(', ')}
+            onChange={(e) => set('techStack', e.target.value.split(',').map((item) => item.trim()).filter(Boolean))}
+          />
         </div>
-        <div>
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Tag</label>
-          <input className={inputClass} value={form.tag} onChange={(e) => set('tag', e.target.value)} />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Order</label>
-          <input type="number" className={inputClass} value={form.order} onChange={(e) => set('order', Number(e.target.value))} />
-        </div>
-        <div className="col-span-2">
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Background Color</label>
-          <div className="flex gap-2 items-center">
-            <input type="color" className="h-10 w-16 border rounded cursor-pointer bg-white dark:bg-[#1a1a24]" value={form.bgColor} onChange={(e) => set('bgColor', e.target.value)} />
-            <span className="text-xs font-oxygen text-gray-500 dark:text-gray-400">{form.bgColor}</span>
+
+        <div className="admin-form-section">
+          <div className="admin-form-section-head">
+            <div>
+              <p className="admin-form-section-title">External Links</p>
+              <p className="admin-card-sub">Live, GitHub, Figma, Play Store, Case Study — any label works.</p>
+            </div>
+            <AddButton onClick={addLink}>Add Link</AddButton>
+          </div>
+
+          <div className="space-y-3">
+            {(form.links || []).map((link, index) => (
+              <div key={`${link.label}-${index}`} className="admin-subcard">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_1.6fr_0.8fr_auto] gap-2 md:items-end">
+                  <div>
+                    <label className="admin-label">Label</label>
+                    <input className={smallInputClass} value={link.label || ''} onChange={(e) => updateLink(index, 'label', e.target.value)} placeholder="Live, GitHub, Figma" />
+                  </div>
+                  <div>
+                    <label className="admin-label">URL</label>
+                    <input className={smallInputClass} value={link.url || ''} onChange={(e) => updateLink(index, 'url', e.target.value)} placeholder="https://..." />
+                  </div>
+                  <div>
+                    <label className="admin-label">Type</label>
+                    <select className={smallInputClass} value={link.type || 'custom'} onChange={(e) => updateLink(index, 'type', e.target.value)}>
+                      <option value="live">Live</option>
+                      <option value="source">Source</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </div>
+                  <ListControls
+                    onUp={() => reorderLink(index, -1)}
+                    onDown={() => reorderLink(index, 1)}
+                    onRemove={() => removeLink(index)}
+                    canUp={index > 0}
+                    canDown={index < form.links.length - 1}
+                  />
+                </div>
+                <div className="mt-2">
+                  <Toggle label="Show this link" checked={link.visible !== false} onChange={(value) => updateLink(index, 'visible', value)} />
+                </div>
+              </div>
+            ))}
+            {(form.links || []).length === 0 && <p className="admin-empty-inline">No external links yet.</p>}
           </div>
         </div>
-        <div>
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Live URL</label>
-          <input className={inputClass} value={form.liveUrl} onChange={(e) => set('liveUrl', e.target.value)} />
+
+        <div className="admin-form-actions">
+          <SaveButton saving={saving}>{editing ? 'Update Project' : 'Create Project'}</SaveButton>
+          <button type="button" onClick={onDone} className="admin-btn admin-btn--ghost">Cancel</button>
         </div>
-        <div>
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Source Code URL</label>
-          <input className={inputClass} value={form.sourceCodeUrl} onChange={(e) => set('sourceCodeUrl', e.target.value)} />
-        </div>
-        <div className="col-span-2">
-          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-            <input type="checkbox" checked={form.comingSoon} onChange={(e) => set('comingSoon', e.target.checked)} className="rounded" />
-            Coming Soon
-          </label>
-        </div>
-        <div className="col-span-2">
-          <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-            <input type="checkbox" checked={form.ispublished !== false} onChange={(e) => set('ispublished', e.target.checked)} className="rounded" />
-            Published
-          </label>
-        </div>
-        <div className="col-span-2">
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Image URL</label>
-          <input className={inputClass} value={form.image} onChange={(e) => set('image', e.target.value)} placeholder="Or upload below" />
-        </div>
-        <div className="col-span-2">
-          <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Upload Image</label>
-          <input type="file" accept="image/*" onChange={handleImage} className="text-sm text-gray-600 dark:text-gray-400" />
-          {form.image && <img src={form.image} alt="preview" className="mt-2 h-20 object-contain rounded border border-gray-200 dark:border-white/10" />}
-        </div>
-      </div>
-      <div className="flex gap-3">
-        <button type="submit" disabled={saving} className="bg-gray-900 dark:bg-violet-600 text-white px-5 py-2 rounded-lg font-signika font-semibold hover:bg-gray-800 dark:hover:bg-violet-500 disabled:opacity-50 transition-colors">
-          {saving ? 'Saving...' : editing ? 'Update' : 'Create'}
-        </button>
-        <button type="button" onClick={onDone} className="bg-gray-200 dark:bg-white/10 text-gray-700 dark:text-gray-300 px-5 py-2 rounded-lg font-signika font-semibold hover:bg-gray-300 dark:hover:bg-white/20 transition-colors">
-          Cancel
-        </button>
-      </div>
+      </Card>
     </form>
   )
 }

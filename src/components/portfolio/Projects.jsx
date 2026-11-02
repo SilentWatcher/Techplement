@@ -1,7 +1,15 @@
 import ProjectCard from './ProjectCard.jsx'
 
-export default function Projects({ projects = [] }) {
-  const visibleProjects = projects.filter(p => p.ispublished !== false)
+export default function Projects({ projects = [], section }) {
+  const copy = section || {}
+  const visibleProjects = projects.filter(
+    (project) => project.ispublished !== false && project.status !== 'archived'
+  )
+  const subtitle = (copy.subtitleTemplate || 'ACTIVE_BUILD — {count} ENTRIES').replace(
+    '{count}',
+    String(visibleProjects.length)
+  )
+
   return (
     <section id="project" className="projects-section">
       {/* Layer 1: Gradient base */}
@@ -43,35 +51,33 @@ export default function Projects({ projects = [] }) {
         <div className="projects-header">
           <div className="projects-badge">
             <span className="projects-badge-dot" />
-            <span className="projects-badge-text">// DEPLOYMENTS</span>
+            <span className="projects-badge-text">{copy.badge || '// DEPLOYMENTS'}</span>
           </div>
           <h2 className="projects-title">
             <span className="projects-title-bracket">[</span>
-            <span className="projects-title-main">Projects</span>
+            <span className="projects-title-main">{copy.title || 'Projects'}</span>
             <span className="projects-title-bracket">]</span>
           </h2>
           <div className="projects-header-line" />
-          <p className="projects-subtitle">
-            ACTIVE_BUILD &mdash; {visibleProjects.length} ENTRIES
-          </p>
+          <p className="projects-subtitle">{subtitle}</p>
         </div>
 
         {/* GRID */}
         {visibleProjects.length === 0 ? (
           <div className="projects-empty">
             <span className="projects-empty-icon">◈</span>
-            <span className="projects-empty-text">NO_DEPLOYMENTS_FOUND</span>
+            <span className="projects-empty-text">{copy.emptyText || 'NO_DEPLOYMENTS_FOUND'}</span>
             <span className="projects-empty-cursor" />
           </div>
         ) : (
           <div className="projects-grid">
-            {visibleProjects.map((p, i) => (
+            {visibleProjects.map((project, i) => (
               <div
-                key={p._id}
+                key={project._id}
                 className="projects-grid-item"
                 style={{ '--i': i }}
               >
-                <ProjectCard project={p} index={i} />
+                <ProjectCard project={project} index={i} section={copy} />
               </div>
             ))}
           </div>

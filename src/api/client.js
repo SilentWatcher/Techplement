@@ -8,21 +8,43 @@ api.interceptors.request.use((config) => {
   return config
 })
 
-export const getProfile = () => api.get('/profile').then((r) => r.data)
-export const updateProfile = (data) => api.put('/profile', data).then((r) => r.data)
+// Public content
+export const getContent = () => api.get('/v1/content').then((r) => r.data)
+export const getSettings = () => api.get('/v1/settings').then((r) => r.data)
+export const updateSettings = (data) => api.put('/v1/settings', data).then((r) => r.data)
 
-export const getProjects = () => api.get('/projects').then((r) => r.data)
-export const createProject = (data) => api.post('/projects', data).then((r) => r.data)
-export const updateProject = (id, data) => api.put(`/projects/${id}`, data).then((r) => r.data)
-export const deleteProject = (id) => api.delete(`/projects/${id}`).then((r) => r.data)
+export const getProfile = () => api.get('/v1/profile').then((r) => r.data)
+export const updateProfile = (data) => api.put('/v1/profile', data).then((r) => r.data)
 
+export const getProjects = () => api.get('/v1/projects').then((r) => r.data)
+export const createProject = (data) => api.post('/v1/projects', data).then((r) => r.data)
+export const updateProject = (id, data) => api.put(`/v1/projects/${id}`, data).then((r) => r.data)
+export const reorderProjects = (ids) => api.put('/v1/projects/reorder', { ids }).then((r) => r.data)
+export const deleteProject = (id) => api.delete(`/v1/projects/${id}`).then((r) => r.data)
+
+// Tech stack
+export const getTech = () => api.get('/v1/tech').then((r) => r.data)
+export const createTech = (data) => api.post('/v1/tech', data).then((r) => r.data)
+export const updateTech = (id, data) => api.put(`/v1/tech/${id}`, data).then((r) => r.data)
+export const deleteTech = (id) => api.delete(`/v1/tech/${id}`).then((r) => r.data)
+
+// Auth
 export const login = (email, password) =>
-  api.post('/auth/login', { email, password }).then((r) => r.data)
+  api.post('/v1/auth/login', { email, password }).then((r) => r.data)
 
+// Upload
 export const uploadImage = (file) => {
   const fd = new FormData()
   fd.append('image', file)
-  return api.post('/upload', fd).then((r) => r.data)
+  return api.post('/v1/upload', fd).then((r) => r.data)
 }
+
+// Analytics
+export const getPublicMetrics = (visitorId) =>
+  api.get('/v1/metrics/public', { params: { visitorId } }).then((r) => r.data)
+export const trackView = (payload) => api.post('/v1/metrics/view', payload).then((r) => r.data)
+export const toggleLike = (payload) => api.post('/v1/metrics/like', payload).then((r) => r.data)
+export const getAdminSummary = (days = 30) =>
+  api.get('/v1/metrics/admin/summary', { params: { days } }).then((r) => r.data)
 
 export default api

@@ -1,34 +1,46 @@
 import mongoose from 'mongoose'
 
-const profileSchema = new mongoose.Schema({
-  name: { type: String, default: 'Vikas Sr Vitekari' },
-  title: { type: String, default: 'UI Designer and Frontend Developer' },
-  bio: { type: String, default: 'I design and build beautiful websites...' },
-  aboutParagraph: { type: String, default: '' },
-  resumeUrl: { type: String, default: '' },
-  email: { type: String, default: 'vitekarvikas55@gmail.com' },
-  quote: { type: String, default: '' },
-  socialLinks: {
-    github: { type: String, default: '' },
-    linkedin: { type: String, default: '' },
-    instagram: { type: String, default: '' },
-    twitter: { type: String, default: '' },
+const socialLinkSchema = new mongoose.Schema(
+  {
+    platform: { type: String, default: '' },
+    label: { type: String, default: '' },
+    url: { type: String, default: '' },
+    icon: { type: String, default: '' },
+    order: { type: Number, default: 0 },
+    visible: { type: Boolean, default: true },
   },
-  aboutCards: [
-    {
-      title: String,
-      description: String,
-      icon: { type: String, default: '' },
-    },
-  ],
-  techStacks: [
-    {
-      title: String,
-      description: String,
-      icon: { type: String, default: '' },
-      tier: { type: String, enum: ['primary', 'secondary', 'other'], default: 'primary' },
-    },
-  ],
-})
+  { _id: false }
+)
+
+const aboutCardSchema = new mongoose.Schema(
+  {
+    title: { type: String, default: '' },
+    description: { type: String, default: '' },
+    icon: { type: String, default: '' },
+    tags: [{ type: String }],
+    order: { type: Number, default: 0 },
+    visible: { type: Boolean, default: true },
+  },
+  { _id: false }
+)
+
+const profileSchema = new mongoose.Schema(
+  {
+    name: { type: String, default: 'Vikas Sr Vitekari' },
+    title: { type: String, default: 'UI Designer and Frontend Developer' },
+    bio: { type: String, default: '' },
+    aboutParagraph: { type: String, default: '' },
+    resumeUrl: { type: String, default: '' },
+    resumeLabel: { type: String, default: 'Resume' },
+    email: { type: String, default: '' },
+    phone: { type: String, default: '' },
+    location: { type: String, default: '' },
+    quote: { type: String, default: '' },
+    // Legacy object shape kept so old documents can still be read during migration.
+    socialLinks: { type: mongoose.Schema.Types.Mixed, default: [] },
+    aboutCards: [aboutCardSchema],
+  },
+  { timestamps: true, minimize: false }
+)
 
 export default mongoose.model('Profile', profileSchema)
