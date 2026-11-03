@@ -114,18 +114,32 @@ function NavIcon({ name }) {
   )
 }
 
-export default function Sidebar({ open = false, onClose = () => {} }) {
+export default function Sidebar({ open = false, onClose = () => {}, collapsed = false, onToggleCollapse = () => {}, onOpenPreview = () => {} }) {
   const { logout } = useAuth()
   let counter = 0
 
   return (
-    <aside className={`admin-sidebar ${open ? 'admin-sidebar--open' : ''}`} aria-label="Admin navigation">
+    <aside
+      className={`admin-sidebar ${open ? 'admin-sidebar--open' : ''} ${collapsed ? 'admin-sidebar--collapsed' : ''}`}
+      aria-label="Admin navigation"
+    >
       <div className="admin-brand">
         <div className="admin-brand-mark">V</div>
-        <div className="admin-brand-copy">
-          <p className="admin-brand-name">Vitekari</p>
-          <p className="admin-brand-sub">Command Center</p>
-        </div>
+        {!collapsed && (
+          <div className="admin-brand-copy">
+            <p className="admin-brand-name">Vitekari</p>
+            <p className="admin-brand-sub">Command Center</p>
+          </div>
+        )}
+        <button
+          type="button"
+          className="admin-sidebar-collapse"
+          onClick={onToggleCollapse}
+          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          title={collapsed ? 'Expand' : 'Collapse'}
+        >
+          {collapsed ? '»' : '«'}
+        </button>
         <button type="button" className="admin-sidebar-close" onClick={onClose} aria-label="Close menu">
           ✕
         </button>
@@ -134,7 +148,7 @@ export default function Sidebar({ open = false, onClose = () => {} }) {
       <nav className="admin-nav">
         {groups.map((group) => (
           <div className="admin-nav-group" key={group.label}>
-            <p className="admin-nav-label">{group.label}</p>
+            {!collapsed && <p className="admin-nav-label">{group.label}</p>}
             {group.links.map((link) => {
               counter += 1
               return (
@@ -143,10 +157,11 @@ export default function Sidebar({ open = false, onClose = () => {} }) {
                   to={link.to}
                   onClick={onClose}
                   className={({ isActive }) => `admin-nav-link ${isActive ? 'active' : ''}`}
+                  title={collapsed ? link.label : undefined}
                 >
                   <NavIcon name={link.icon} />
-                  <span className="admin-nav-text">{link.label}</span>
-                  <span className="admin-nav-index">{String(counter).padStart(2, '0')}</span>
+                  {!collapsed && <span className="admin-nav-text">{link.label}</span>}
+                  {!collapsed && <span className="admin-nav-index">{String(counter).padStart(2, '0')}</span>}
                   <span className="admin-nav-dot" />
                 </NavLink>
               )
@@ -156,18 +171,20 @@ export default function Sidebar({ open = false, onClose = () => {} }) {
       </nav>
 
       <div className="admin-sidebar-footer">
-        <div className="admin-sidebar-status">
-          <span className="admin-status-dot" />
-          System online
-        </div>
-        <button type="button" onClick={logout} className="admin-logout">
+        {!collapsed && (
+          <div className="admin-sidebar-status">
+            <span className="admin-status-dot" />
+            System online
+          </div>
+        )}
+        <button type="button" onClick={logout} className="admin-logout" title={collapsed ? 'Sign out' : undefined}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="w-4 h-4" aria-hidden="true">
             <path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3" />
             <path d="M10 8l-4 4 4 4M6 12h9" />
           </svg>
-          Sign out
+          {!collapsed && 'Sign out'}
         </button>
-        <p className="admin-sidebar-meta">CMS v2.0 · Authenticated</p>
+        {!collapsed && <p className="admin-sidebar-meta">CMS v2.0 · Authenticated</p>}
       </div>
     </aside>
   )
