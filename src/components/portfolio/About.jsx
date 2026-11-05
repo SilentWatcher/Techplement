@@ -162,6 +162,7 @@ export default function About({ profile, section }) {
                     src={about.image}
                     alt={profile?.name || 'about'}
                     className="about-image"
+                    loading="lazy"
                   />
                 )}
                 <div className="about-image-corner about-image-corner--tl" />

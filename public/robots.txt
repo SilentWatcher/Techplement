@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vikas-vitekari.netlify.app/sitemap.xml

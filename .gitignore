@@ -3,3 +3,4 @@ dist
 .env
 server/uploads
 *.log
+cred.md

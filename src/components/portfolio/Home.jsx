@@ -49,7 +49,7 @@ export default function Home({ profile, section }) {
   const [showContent, setShowContent] = useState(false)
 
   useEffect(() => {
-    const t = setTimeout(() => setShowContent(true), 2000)
+    const t = setTimeout(() => setShowContent(true), 1200)
     return () => clearTimeout(t)
   }, [])
 
@@ -61,7 +61,7 @@ export default function Home({ profile, section }) {
 
   const particles = useMemo(() => {
     const arr = []
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 8; i++) {
       const size = randInt(1, 3)
       arr.push({
         id: `p-${i}`,

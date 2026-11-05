@@ -1,16 +1,16 @@
-import { useEffect, useState, useRef } from 'react'
+import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate, Link, useLocation, useNavigate } from 'react-router-dom'
 import Sidebar from '../components/admin/Sidebar.jsx'
 import Dashboard from '../components/admin/Dashboard.jsx'
 import Analytics from '../components/admin/Analytics.jsx'
-import ProfileEditor from '../components/admin/ProfileEditor.jsx'
-import ProjectsManager from '../components/admin/ProjectsManager.jsx'
-import SiteSettingsEditor from '../components/admin/SiteSettingsEditor.jsx'
-import HeroEditor from '../components/admin/HeroEditor.jsx'
-import AboutEditor from '../components/admin/AboutEditor.jsx'
-import SectionsEditor from '../components/admin/SectionsEditor.jsx'
-import FooterEditor from '../components/admin/FooterEditor.jsx'
-import TechManager from '../components/admin/TechManager.jsx'
+const ProfileEditor = lazy(() => import('../components/admin/ProfileEditor.jsx'))
+const ProjectsManager = lazy(() => import('../components/admin/ProjectsManager.jsx'))
+const SiteSettingsEditor = lazy(() => import('../components/admin/SiteSettingsEditor.jsx'))
+const HeroEditor = lazy(() => import('../components/admin/HeroEditor.jsx'))
+const AboutEditor = lazy(() => import('../components/admin/AboutEditor.jsx'))
+const SectionsEditor = lazy(() => import('../components/admin/SectionsEditor.jsx'))
+const FooterEditor = lazy(() => import('../components/admin/FooterEditor.jsx'))
+const TechManager = lazy(() => import('../components/admin/TechManager.jsx'))
 import { useTheme } from '../context/ThemeContext.jsx'
 
 const pageTitles = {
@@ -217,7 +217,8 @@ export default function Admin() {
 
         <div className="admin-workspace">
           <main className="admin-main">
-          <Routes>
+            <Suspense fallback={<p className="admin-loading">Loading...</p>}>
+            <Routes>
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="settings" element={<SiteSettingsEditor />} />
@@ -230,6 +231,7 @@ export default function Admin() {
             <Route path="projects" element={<ProjectsManager />} />
             <Route path="*" element={<Navigate to="dashboard" replace />} />
           </Routes>
+            </Suspense>
         </main>
 
         {previewOpen && (
